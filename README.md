@@ -16,7 +16,7 @@ CamoVoice is a desktop speech-to-text application designed with one core princip
 - **Local Settings**: Your preferences are stored in a simple `settings.json` file on your device and auto-loaded at open
 - **English Optimized**: Purpose-built for English transcription with maximum accuracy
 
-This architecture makes CamoVoice ideal for transcribing sensitive meetings, medical notes, legal dictation, personal journals, or any audio where privacy matters.
+This architecture makes CamoVoice ideal for transcribing sensitive notes, legal dictation, personal journals, or any audio where privacy matters.
 
 ---
 
@@ -28,7 +28,7 @@ CamoVoice features a high-contrast, dark-themed interface designed for simplicit
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  [Load .WAV]           🎙 Record Button          Status     │
+│  [Load Audio File]          🎙 Record Button          Status     │
 │  [Settings]        "Click or hold spacebar"     🎤 Device   │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
@@ -72,9 +72,14 @@ This visual feedback confirms your microphone is working and picking up audio.
 
 ### Loading Audio Files
 
-Click **Load .WAV** to transcribe existing audio files. CamoVoice accepts WAV files of any sample rate or bit depth — the app automatically resamples to the required 16kHz.
+Click **Load Audio File** to transcribe existing audio files. CamoVoice supports:
 
-> **Note**: Only WAV format is currently supported. Convert other formats (MP3, M4A, etc.) to WAV before loading.
+- **WAV** — Any sample rate or bit depth
+- **MP3** — Standard MP3 files
+
+The app automatically resamples to the required 16kHz and converts stereo to mono. Files currently have a 60 MB (Fast mode) and 30 MB (Thinking mode) size limit to prevent freezing.
+
+> **Note**: M4A/AAC files are not supported. Convert them to WAV or MP3 before loading.
 
 ---
 
@@ -110,6 +115,8 @@ CamoVoice offers two transcription modes, selectable at the bottom of the window
 - **Thinking mode**: Uses the full large model (~1.4GB) with beam search and voice activity detection. Better accuracy for complex vocabulary, accents, background noise, or professional transcription work.
 
 Your mode selection is automatically saved. The model loads on first use of each mode, so the first transcription after opening the app or switching modes may take slightly longer.
+
+Recordings have a time limit (currently 10 minutes for Fast, 5 minutes for Thinking) to prevent freezing; the recording will be automatically stopped and transcribed when the limit is reached. Break up recordings to avoid limits.
 
 ---
 
