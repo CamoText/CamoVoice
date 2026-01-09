@@ -36,7 +36,7 @@ CamoVoice features a high-contrast, dark-themed interface designed for simplicit
 │                      (editable text)                        │
 │                                                             │
 ├─────────────────────────────────────────────────────────────┤
-│  [Copy Text] [▶ Play] [Save As]                    [Clear]  │
+│  [Copy Text] [▶ Play] [Save As]       [Undo Clear] [Clear]  │
 ├─────────────────────────────────────────────────────────────┤
 │  [Input Audio: ████████░░] ← (appears during recording)     │
 ├─────────────────────────────────────────────────────────────┤
@@ -92,12 +92,49 @@ The large text area displays your transcriptions. Each new recording or file app
 - **Edit freely**: Click into the text area to make corrections or additions
 - **Copy Text**: Copies all text to your clipboard
 - **▶ Play**: Reads the transcription aloud using text-to-speech (see Playback Voice below)
-- **Save As**: Exports to a `.txt` file
-- **Clear**: Removes all text (can be undone with Ctrl+Z / ⌘Z)
+- **Save As**: Opens a save dialog with timestamp options (see below)
+- **Undo Clear**: Restores the most recently cleared text (grayed out when nothing to undo)
+- **Clear**: Removes all text and timestamps
 
 ### Undo Clear
 
-If you accidentally clear your text, press **Ctrl+Z** (Windows) or **⌘Z** (macOS) to restore it. This works for the most recent clear action.
+If you accidentally clear your text, you have two options:
+- Click the **Undo Clear** button (located to the left of Clear)
+- Press **Ctrl+Z** (Windows) or **⌘Z** (macOS)
+
+This restores both the text and any associated timestamps from the most recent clear action. The Undo Clear button is grayed out when there's nothing to restore.
+
+### Save As Options
+
+When you click **Save As** (or press **Ctrl+S** / **⌘S**), a dialog appears with options:
+
+- **Include date at top of document**: Adds a header with the current date
+- **Include timestamp after each transcription**: Adds a `[Recorded: DD-Mon-YYYY HH:MM:SS]` line after each transcription segment (e.g., `[Recorded: 09-Jan-2026 14:32:15]`)
+- **Include edits to transcription**: Saves the text exactly as it appears in the app, including any spelling corrections or edits you've made. When this is enabled, timestamps are disabled since edited text may no longer match the original transcription segments.
+
+#### Export Formats
+
+CamoVoice supports three export formats:
+
+| Format | Extension | Best For |
+|--------|-----------|----------|
+| **Text File** | `.txt` | Universal compatibility, email, plain text editors |
+| **Word Document** | `.docx` | Professional documents, further editing in Microsoft Word |
+| **PDF Document** | `.pdf` | Sharing, archiving, printing (read-only format) |
+
+Simply select your desired format from the "Save as type" dropdown in the file dialog.
+
+Example output with both timestamp options enabled:
+```
+Transcription Record - 09-Jan-2026
+========================================
+
+This is my first transcription segment.
+[Recorded: 09-Jan-2026 14:32:15]
+
+This is my second transcription segment.
+[Recorded: 09-Jan-2026 14:35:42]
+```
 
 ---
 
@@ -143,6 +180,17 @@ Choose the voice used for the **▶ Play** feature, which reads your transcripti
 
 The available voices depend on what you've installed on your operating system.
 
+### Show Timestamps in Transcriptions
+
+When enabled, each transcription segment displays its recording time directly in the app, formatted like a 24-hour ISO-style legal/medical record with unambiguous month abbreviations:
+
+```
+Your transcribed text here.
+[Recorded: 09-Jan-2026 14:32:15]
+```
+
+This is useful for keeping track of when recordings were made. Timestamps are always stored internally — this setting just controls whether they're visible in the app. When you save, you can choose whether to include timestamps regardless of this display setting.
+
 ---
 
 ## Accessibility Features
@@ -168,6 +216,7 @@ This makes CamoVoice usable for:
 | Action | Windows | macOS |
 |--------|---------|-------|
 | Hold to record | Spacebar (hold) | Spacebar (hold) |
+| Save As | Ctrl+S | ⌘S |
 | Undo clear | Ctrl+Z | ⌘Z |
 
 ---
@@ -234,7 +283,7 @@ The first transcription may take slightly longer as the model initializes. Subse
 - Option to auto-detect input language
 - Option to auto-translate to English
 - Additional file formats for input sounds and output files
-- Audit trial recordation, such as timestamps
+- Enhanced audit trail features and export formats
 
 ---
 
