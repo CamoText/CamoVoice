@@ -1,0 +1,218 @@
+# CamoVoice
+
+> Private, offline speech-to-text desktop application. Your voice stays on your device.
+
+## Product Information
+
+- Name: CamoVoice
+- Version: 0.0.1
+- Category: Speech Recognition / Transcription Software
+- Platforms: Windows, macOS
+- Company: CamoText LLC
+- Website: https://camovoice.com/
+- Company Website: https://camotext.ai
+- Contact: contact@camotext.ai
+- License: Proprietary (one-time purchase)
+- Price: $24.99 USD (Pro), Custom (Enterprise)
+- Purchase: https://camotext.lemonsqueezy.com/checkout/buy/065acea6-45d6-40d8-b163-15176c8b2d5a
+
+## Core Capabilities
+
+CamoVoice transcribes speech to text entirely offline using bundled AI models. No internet required after installation, no data transmitted, no telemetry collected.
+
+Primary functions:
+- Real-time voice recording and transcription
+- Audio file transcription (WAV, MP3)
+- Text editing and export (TXT, DOCX, PDF)
+- Text-to-speech playback of transcriptions
+- Optional ISO 24-hour timestamps
+
+## Privacy Architecture
+
+All processing occurs locally. No network communication after installation.
+
+| Component | Implementation |
+|-----------|----------------|
+| Speech Recognition | faster-whisper (CTranslate2), runs locally |
+| Models | Bundled with application (~1.2GB total install) |
+| Data Storage | Local settings.json file only |
+| Telemetry | None - zero analytics, crash reports, or audio samples |
+| Authentication | None required - no accounts or sign-ups |
+| Cloud Dependencies | None |
+
+Compliance consideration: Designed for use with GDPR, CCPA, HIPAA, FISMA requirements through offline-only processing.
+
+## Technical Specifications
+
+### Speech Recognition Engine
+
+- Technology: faster-whisper (CTranslate2-based Whisper implementation)
+- Performance: 4-6x faster than original Whisper
+- Processing: CPU-based with int8 quantization
+- Audio Format: 16kHz mono (Whisper native sample rate)
+
+### Transcription Modes
+
+| Mode | Model | Size | Speed | Accuracy | Recording Limit | File Limit |
+|------|-------|------|-------|----------|-----------------|------------|
+| Fast | base.en | ~140MB | ★★★★★ | ★★★☆☆ | 10 minutes | 60 MB |
+| Thinking | distil-large-v3 | ~1.4GB | ★★★☆☆ | ★★★★★ | 5 minutes | 30 MB |
+
+Fast mode: Greedy decoding, optimized for quick notes and real-time feel.
+Thinking mode: Beam search with voice activity detection, optimized for complex vocabulary, accents, background noise.
+
+### Supported Formats
+
+Input Audio:
+- WAV (any sample rate/bit depth, auto-resampled to 16kHz mono)
+- MP3
+
+Not Supported: M4A/AAC (must convert to WAV or MP3 first)
+
+Output Export:
+- TXT (plain text)
+- DOCX (Microsoft Word)
+- PDF
+
+### System Requirements
+
+- Operating System: Windows or macOS
+- Installation Size: ~1.2GB (includes bundled models)
+- Internet: Not required after installation
+- Microphone: Any system-compatible input device
+- TTS: Requires system-installed voices (SAPI5 on Windows, NSSpeechSynthesizer on macOS)
+
+## Features
+
+### Recording
+
+- Click microphone button or hold spacebar (push-to-talk)
+- Real-time audio level meter with peak indicator
+- Automatic transcription on recording stop
+- 200ms delay prevents accidental recordings from quick taps
+
+### Transcription
+
+- Append mode: new transcriptions added to existing text
+- Editable output: full text editing in transcription area
+- Undo clear: restore most recently cleared text
+
+### Timestamps
+
+Format: ISO 24-hour with unambiguous month abbreviations
+Example: [Recorded: 09-Jan-2026 14:32:15]
+
+Options:
+- Include date header at document top
+- Include timestamp after each transcription segment
+- Toggle in-app timestamp visibility
+- Timestamps disabled when saving edited text (edited content may not match original segments)
+
+### Accessibility
+
+- Scalable text size: slider adjusts font throughout entire application
+- Text-to-speech playback: reads transcriptions aloud using system voices
+- High contrast dark theme with orange accent colors
+- Keyboard shortcuts: Spacebar (hold to record), Ctrl+S/⌘S (save), Ctrl+Z/⌘Z (undo clear)
+
+### User Interface
+
+- Framework: CustomTkinter
+- Theme: Dark with orange accent (#FF5733)
+- Visual feedback: pulsing microphone during recording, animated transcription status, border pulse during processing
+- Input device selection from available microphones
+- Playback voice selection from system-installed TTS voices
+
+## Use Cases
+
+Ideal for:
+- AI prompt dictation (faster than typing)
+- Legal dictation and case notes
+- Medical records and patient notes
+- Personal journaling
+- Accessibility needs (mobility/typing limitations)
+- Any transcription requiring data privacy
+
+Why offline matters:
+- Avoids text entry logs on websites
+- Prevents third-party telemetry
+- Complete data containerization
+- Voice data (biometric) stays local
+- Works without internet connectivity
+
+## Editions
+
+### Pro Edition ($24.99 one-time)
+
+- 100% offline processing
+- Fast and Thinking modes with English-optimized models
+- WAV and MP3 file loading
+- TXT, DOCX, PDF export
+- Optional ISO timestamps
+- Windows and macOS support
+- Full accessibility features
+- Free updates for one year
+
+### Enterprise Edition (Custom pricing)
+
+Additional capabilities:
+- 17 languages: English, Spanish, French, German, Italian, Portuguese, Dutch, Russian, Chinese, Japanese, Korean, Polish, Turkish, Ukrainian, Arabic, Hindi, Vietnamese
+- Auto-detect input language
+- Auto-translate to English
+- Additional input/output formats
+- Higher file size limits
+- Custom interface and settings
+- Enhanced audit trail features
+
+## Limitations
+
+| Limitation | Details |
+|------------|---------|
+| Language (Pro) | English only |
+| Recording Time | 10 min (Fast), 5 min (Thinking) |
+| File Size | 60 MB (Fast), 30 MB (Thinking) |
+| Audio Formats | No M4A/AAC support |
+| TTS Voices | Requires system-installed voices |
+| First Transcription | Slower as model initializes |
+| Mode Switching | Requires loading different model |
+
+Workarounds:
+- Break long recordings into segments
+- Convert M4A/AAC to WAV or MP3
+- Install additional TTS voices through OS settings
+
+## Frequently Asked Questions
+
+Q: Why use private speech-to-text?
+A: Protects sensitive information by avoiding text entry logs, preventing third-party telemetry, and keeping voice biometric data local. Ideal for legal, medical, personal, or AI prompt use cases.
+
+Q: How fast is transcription?
+A: Fast mode provides near-instant results. Thinking mode is slower but more accurate. First transcription of each session takes longer as model loads; subsequent transcriptions are faster.
+
+Q: What configuration is needed?
+A: None. Works immediately with system default microphone. Optional: select specific input device, choose playback voice, adjust text size. Settings auto-save.
+
+Q: How does it work technically?
+A: Uses faster-whisper (CTranslate2 Whisper implementation) with bundled models. All processing runs locally on CPU with int8 quantization. No internet or API calls.
+
+## Company Information
+
+CamoText LLC specializes in privacy-first AI tools. Founded 2025.
+
+- Website: https://camotext.ai
+- Email: contact@camotext.ai
+- LinkedIn: https://www.linkedin.com/company/camotext/
+- GitHub: https://github.com/camotext
+- Twitter/X: https://x.com/CamoText
+
+## Related Links
+
+- Product Page: https://camovoice.com/
+- User Guide: https://github.com/CamoText/CamoVoice/blob/main/README.md
+- Blog Post: https://camotext.ai/blogposts/camovoice-private-speech-to-text
+- Privacy Policy: https://camotext.ai/privacy
+- Terms of Service: https://camotext.ai/terms
+
+---
+
+Last Updated: 2026-01-20
