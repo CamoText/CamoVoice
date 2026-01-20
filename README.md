@@ -298,5 +298,11 @@ The first transcription may take slightly longer as the model initializes. Subse
 
 ---
 
+## LLM Documentation
+
+For LLM-optimized documentation, see [llms.txt](./llms.txt) - a structured format designed for language model consumption containing product specifications, technical details, and API-friendly metadata.
+
+---
+
 *CamoVoice v0.0.1*
 
