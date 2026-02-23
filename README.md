@@ -74,12 +74,11 @@ This visual feedback confirms your microphone is working and picking up audio.
 
 Click **Load Audio File** to transcribe existing audio files. CamoVoice supports:
 
+- **M4A** - M4A files 
 - **WAV** — Any sample rate or bit depth
 - **MP3** — Standard MP3 files
 
 The app automatically resamples to the required 16kHz and converts stereo to mono. Files currently have a 60 MB (Fast mode) and 30 MB (Thinking mode) size limit to prevent freezing.
-
-> **Note**: M4A/AAC files are not supported. Convert them to WAV or MP3 before loading.
 
 ---
 
